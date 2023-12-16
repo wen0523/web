@@ -1,5 +1,7 @@
 <template>
-    <h1>
-        Categories
-    </h1>
+    <div class="div-base">
+        <h1>
+            Categories
+        </h1>
+    </div>
 </template>
