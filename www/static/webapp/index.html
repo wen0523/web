@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" href="/lan.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+  <title>Wen</title>
+  <script>
+    WIDGET = {
+      "CONFIG": {
+        "modules": "01234",
+        "background": "1",
+        "tmpColor": "FFFFFF",
+        "tmpSize": "16",
+        "cityColor": "FFFFFF",
+        "citySize": "16",
+        "aqiColor": "FFFFFF",
+        "aqiSize": "16",
+        "weatherIconSize": "24",
+        "alertIconSize": "18",
+        "padding": "6.5px 10px 6.5px 10px",
+        "shadow": "0",
+        "language": "auto",
+        "borderRadius": "20",
+        "fixed": "false",
+        "vertical": "top",
+        "horizontal": "left",
+        "key": "32156f85f7284b238a2d4e4b6abf8ed1"
+      }
+    }
+  </script>
+  <script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script>
+  <style>
+    #he-plugin-simple {
+      position: fixed !important;
+      width: 17em;
+      top: 1.5em ;
+      right: 19em;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+  <div id="he-plugin-simple"></div>
+</body>
+
+</html>
