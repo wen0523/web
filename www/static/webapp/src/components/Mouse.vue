@@ -1,5 +1,7 @@
 
 <script lang="ts" setup>
+import { onMounted } from 'vue';
+
 //重写lerp
 interface Math {
     lerp(start: number, end: number, t: number): number;
@@ -36,38 +38,23 @@ class Cursor {
     }
 
     create() {
-        this.cursor = document.createElement("div");
-        this.cursor.id = "cursor";
-        this.cursor.classList.add("hidden");
-        document.body.append(this.cursor);
-
-        const elements = document.getElementsByTagName("*");
-        for (let i = 0; i < elements.length; i++) {
-            if (getStyle(elements[i], "cursor") === "pointer") {
-                this.pt.push(elements[i].outerHTML);
-            }
+        if (!document.getElementById("cursor")) {
+            this.cursor = document.createElement("div");
+            this.cursor.id = "cursor";
+            document.body.append(this.cursor);
         }
-
-        this.scr = document.createElement("style");
-        document.body.appendChild(this.scr);
-        this.scr.innerHTML =
-            "* {cursor: url(\"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='8px' height='8px'><circle cx='4' cy='4' r='4' opacity='.5'/></svg>\") 4 4, auto}";
+        var s = document.getElementsByTagName("*")
+        for (let t = 0; t < s.length; t++)
+            if (this.add(s[t]))
+                this.pt.push(s[t].outerHTML);
     }
 
-    refresh() {
-        this.scr.remove();
-        this.cursor.classList.remove("hover");
-        this.cursor.classList.remove("active");
-        this.pos = {
-            curr: null,
-            prev: null,
-        };
-        this.pt = [];
-        this.create();
-        this.init();
-        this.render();
+    add(tag: Element) {
+        if (tag.tagName.toLowerCase() === "h1" || tag.tagName.toLowerCase() === "div" || tag.tagName.toLowerCase() === "html" || tag.tagName.toLowerCase() === "body" || tag.tagName.toLowerCase() === "head")
+            return false;
+        else
+            return true;
     }
-
     init() {
         document.onmouseover = (event: MouseEvent) => {
             if (event.target instanceof Element) {
@@ -115,24 +102,18 @@ class Cursor {
         requestAnimationFrame(() => this.render());
     }
 }
-
-const CURSOR = new Cursor();
-
-function getStyle(element: Element, style: string): string {
-    try {
-        return window.getComputedStyle ? window.getComputedStyle(element)[Number(style)] : (element as any).currentStyle[style];
-    } catch (e) { }
-    return "";
+//在切换到别的url时只有reflash才能重新渲染（新增的组件），日后还要改进
+window.onload = () => {
+    new Cursor();
 }
 
-
-</script>
+</script> 
 <style id="src">
 #cursor {
     position: fixed;
     width: 16px;
     height: 16px;
-    background-color: #00ff04;
+    background-color: #ffff00;
     border-radius: 8px;
     opacity: .25;
     z-index: 10086;
@@ -156,7 +137,7 @@ function getStyle(element: Element, style: string): string {
 }
 
 /*鼠标全局样式*/
-:root :hover{
+:root :hover {
     cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='8px' height='8px'><circle cx='4' cy='4' r='4' opacity='.5'/></svg>") 4 4, auto
 }
 </style>
