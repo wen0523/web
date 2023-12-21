@@ -10,9 +10,7 @@ import Mouse from './components/Mouse.vue'
     <Menu />
     <new_Button />
     <Love_2D />
-    <router-view></router-view>
     <Mouse />
+    <router-view></router-view>
 </template>
-<style>
-
-</style>
+<style></style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="div-base">
+    <div class="div-base link">
         <h1>
             Link
         </h1>
@@ -7,3 +7,8 @@
         
     </div>
 </template>
+<style scoped>
+.link{
+    height: 100em;
+}
+</style>

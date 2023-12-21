@@ -1,4 +1,7 @@
 <template>
+  <div class="Wen">
+    <span>Wen</span>
+  </div>
   <el-menu  class="el-menu-demo" mode="horizontal" active-text-color="white">
     <el-menu-item @click="handleMenuItemClick('')" ><font-awesome-icon icon="fa-home" pull="left"/>主页</el-menu-item>
     <el-sub-menu>
@@ -49,6 +52,18 @@ const title_change = (title: string) => {
 }
 </script>
 <style>
+/*名字*/
+.Wen{
+  background-color:transparent;
+  position: fixed;
+  left: 4em;
+  top: 0.5em;
+  span{
+    color: white;
+    font-weight: bold;
+    font-size: 1.7em;
+  }
+}
 /*
 总体
 */

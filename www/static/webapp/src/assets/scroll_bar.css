@@ -1,0 +1,31 @@
+/*部分浏览器支持，例如Chrome、Edge、Opera、Safari、iOS 上所有的浏览器*/
+*::-webkit-scrollbar {/*作用：控制滚动条的宽度*/
+    width: 8px;/*滚动条宽度*/
+    /*height: 10px;  高度写不写，都不影响，因为会根据内容的长度自动计算 */
+}
+
+*::-webkit-scrollbar-thumb {/*作用：控制滚动条滑块的颜色、圆角等*/
+    background:transparent; /*颜色*/
+    border-radius: 5px; /*圆角*/
+}
+
+*::-webkit-scrollbar-thumb:hover{/*鼠标在滑块上*/
+    background: rgb(0, 140, 255);
+}
+
+*::-webkit-scrollbar-thumb:active{/*滑块激活*/
+    background: rgb(0, 140, 251);
+}
+
+*::-webkit-scrollbar-track {/*设置滑块轨道样式颜色，圆角等*/
+    background:rgb(0, 255, 255);/*轨道颜色*/ 
+    /*border-radius:5px; 圆角*/
+}
+
+/* 兼容Firefox、IE*/
+* {
+    scrollbar-width: 8px;
+    scrollbar-base-color: rgb(0, 140, 255);
+    scrollbar-track-color:rgb(255, 255, 255);
+    scrollbar-arrow-color:rgb(0, 140, 255);
+}
