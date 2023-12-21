@@ -1,10 +1,7 @@
 <template>
     <div class="div-base">
-      <h1>About</h1>
+      <a><font-awesome-icon icon="fa-brands fa-qq"/></a>
+    <a><font-awesome-icon icon="fa-brands fa-weixin"/></a>
+    <a><font-awesome-icon icon="fa-brands fa-github"/></a>
     </div>
 </template>
-
-
-  
-  
-  

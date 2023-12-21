@@ -199,11 +199,23 @@ class NightDayToggle {
 onMounted(() => {
     const element = document.querySelector('.night-day-toggle')!;
 
+    //获取时间
+    const currentDate = new Date();
+    const hours = currentDate.getHours();
+
     //判断刷新，并设置状态（刷新之前的）
     if (window.name == "") {//此次为首次加载
         window.name = "reload"; // 给window.name设置一个固定值 
-        localStorage.setItem('new_button', 'day');// 首次设置localStorage的值
-        new NightDayToggle(element);
+        if (hours >= 18 || hours <= 6) {//黑天
+            localStorage.setItem('new_button', 'night');
+            element.classList.remove('day');
+            element.classList.add('night');
+            new NightDayToggle(element);
+        } else {//白天
+            localStorage.setItem('new_button', 'day');// 首次设置localStorage的值
+            new NightDayToggle(element);
+        }
+
     } else if (window.name == "reload") {//此次为页面刷新
         const state = localStorage.getItem('new_button')!;
         if (element.classList.contains(state)) {//day
