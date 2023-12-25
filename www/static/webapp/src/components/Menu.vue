@@ -55,7 +55,7 @@ const title_change = (title: string) => {
 /*名字*/
 .Wen{
   background-color:transparent;
-  position: fixed;
+  position: absolute;
   left: 4em;
   top: 0.5em;
   span{
@@ -69,7 +69,7 @@ const title_change = (title: string) => {
 */
 .el-menu-demo {
   height: 2.15em;
-  position: fixed;
+  position: absolute;
   left: 36em;
   width: 33em;
   background: transparent;

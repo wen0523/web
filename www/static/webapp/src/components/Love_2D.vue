@@ -28,7 +28,6 @@ export default {
   
 <style>
 .live_2d {
-
     position: fixed;
     left: 0;
     bottom: 0;

@@ -50,7 +50,7 @@ class Cursor {
     }
 
     add(tag: Element) {
-        if (tag.tagName.toLowerCase() === "h1" || tag.tagName.toLowerCase() === "div" || tag.tagName.toLowerCase() === "html" || tag.tagName.toLowerCase() === "body" || tag.tagName.toLowerCase() === "head")
+        if (tag.tagName.toLowerCase() === "h1" || tag.tagName.toLowerCase() === "div" || tag.tagName.toLowerCase() === "html" || tag.tagName.toLowerCase() === "body" || tag.tagName.toLowerCase() === "head" || tag.tagName.toLowerCase() === "h2" || tag.tagName.toLowerCase() === "h6" || tag.tagName.toLowerCase() === "img" || tag.tagName.toLowerCase() === "el-container" || tag.tagName.toLowerCase() === "el-header" || tag.tagName.toLowerCase() === "el-asider" || tag.tagName.toLowerCase() === "el-main")  
             return false;
         else
             return true;

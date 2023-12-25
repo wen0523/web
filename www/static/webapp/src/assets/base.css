@@ -56,7 +56,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* light */
+/* light_background */
 :root {
   --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
@@ -71,7 +71,7 @@ body {
   --section-gap: 160px;
 
   body {
-    background-image: url("D:\\Web_Python\\wesome-python3-webapp\\www\\static\\webapp\\public\\background-image.png");
+    background-image: url("/background-image.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -79,7 +79,7 @@ body {
 }
 
 
-/* dark */
+/* dark_background*/
 :root.dark {
   --color-background: var(--vt-c-black);
   --color-background-soft: var(--vt-c-black-soft);
@@ -92,6 +92,7 @@ body {
   --color-text: var(--vt-c-text-dark-2);
 }
 
+/*遮罩，制造暗黑模式*/
 .dark::before {
   content: "";
   position: fixed;

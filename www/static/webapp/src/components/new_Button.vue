@@ -226,7 +226,6 @@ onMounted(() => {
             new NightDayToggle(element);
         }
     }
-
 });
 </script>
 
@@ -258,7 +257,7 @@ $easing: ease;
 
 .night-day-toggle {
     cursor: pointer;
-    position: fixed;
+    position: absolute;
     width: $size * $size-multiplier;
     height: $size;
     border-radius: $size;
