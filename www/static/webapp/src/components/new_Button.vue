@@ -179,17 +179,32 @@ class NightDayToggle {
      */
     _setBackground() {
         let stateName;
-
+        const rootElement = document.documentElement;
+        //author card
+        const clock = document.getElementById('clock')!;
+        const my_card = document.getElementById('my_card')!;
         if (this._state === States.DAY) {
             stateName = 'day';
-            const rootElement = document.documentElement;
+            //author card
+            if(clock.classList.contains('night')){
+                clock.classList.remove('night');
+                my_card.classList.remove('night');
+                clock.classList.add('day');
+                my_card.classList.add('day');
+            }
+
             if (rootElement.classList.contains('dark')) {
                 rootElement.classList.remove('dark');
             }
         } else {
             stateName = 'night';
-            const rootElement = document.documentElement;
             rootElement.classList.add('dark');
+
+            //author card
+            clock.classList.remove('day');
+            my_card.classList.remove('day');
+            clock.classList.add('night');
+            my_card.classList.add('night');
         }
 
         document.body.style.setProperty('--background', `var(--background-${stateName})`);
@@ -257,7 +272,7 @@ $easing: ease;
 
 .night-day-toggle {
     cursor: pointer;
-    position: absolute;
+    position: fixed;
     width: $size * $size-multiplier;
     height: $size;
     border-radius: $size;

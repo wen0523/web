@@ -1,13 +1,34 @@
 <template>
-   <div class="div-base">
-    <h1>Home Page</h1>
-   </div>
- </template>
+  <div class="home">
+    <div class="container">
+      <div class="article div-base">aaaaaaaaaaa</div>
+      <div class="article div-base">bbbbbbbbbbb</div>
+    </div>
+    <div class="container">
+      <div class="article div-base">bbbbbbbbbbb</div>
+      <div class="article div-base">bbbbbbbbbbb</div>
+    </div>
+    <div class="container">
+      <div class="article div-base">bbbbbbbbbbb</div>
+      <div class="article"></div>
+    </div>
+    
+  </div>
+</template>
  
-<script lang="ts" setup>
-
-</script>
-
 <style scoped>
+.home {
+  display: flex;
+  flex-direction: column;
+}
 
+.container{
+  display: flex;
+  flex-direction: row;
+}
+.article {
+  flex: 1;
+  margin: 20px;
+  height: 320px;
+}
 </style>

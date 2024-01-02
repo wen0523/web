@@ -1,75 +1,32 @@
 <template>
-    <div class="shell">
+    <div class="author_card">
         <div class="photo">
             <img src="/card2.png" alt="">
         </div>
-        <div class="content">
-            <div class="text">
-                <h2>Wen-Blog</h2>
-                <h6>&nbsp;&nbsp;&nbsp;Wenの小窝</h6>
+        <h2>Wen-Blog</h2>
+        <h6> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp;欢迎来到Wenの小窝</h6>
+        <div class="social">
+            <h2>Follow me</h2>
+            <div class="social-links">
+                <a href="https://github.com/wen0523/web" target="_blank"><i class="fa fa-github"></i></a>
+                <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-telegram" aria-hidden="true"></i></a>
             </div>
-        </div>
-        <div class="btn" @click="Pop"><span></span></div>
-        <div class="box">
-            <i><font-awesome-icon icon="fa-brands fa-github" size="xl"></font-awesome-icon></i>
-            <i><font-awesome-icon icon="fa-brands fa-twitter" size="xl"></font-awesome-icon></i>
-            <i><font-awesome-icon icon="fa-brands fa-telegram" size="xl"></font-awesome-icon></i>
-            <i><font-awesome-icon icon="fa-solid fa-envelope" size="xl"></font-awesome-icon></i>
         </div>
     </div>
 </template>
 
-<script setup lang="ts">
-import { onMounted } from 'vue';
-
-let btn: Element;
-let box: Element;
-
-onMounted(() => {/*在DOM组件被创建后调用*/
-    btn = document.getElementsByClassName('btn')[0]!;
-    box = document.getElementsByClassName('box')[0]!;
-});
-const Pop = () => {
-    //含active时的操作
-    if (btn.classList.contains('active')) {
-        btn.classList.remove('active');//关闭选项
-        box.classList.remove('open');
-    }
-    //不含active时的操作
-    else {
-        btn.classList.add('active');//弹出选项
-        box.classList.add('open');
-    }
-}
-</script>
-
-<style scoped>
-* {
-    padding: 0;
-    margin: 0;
+<style scoped lang="scss">
+.author_card {
+    /*容器*/
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.shell {
-    width: 247.5px;
-    height: 75px;
-    position: absolute;
-    top: 17em;
-    left: 12.5em;
-    transform: translate(-50%, -50%);
-    border-radius: 5px;
-    background-color: #fafafa;
-    box-shadow: 0 0 2rem #babbbc;
-    animation: show-shell 0.5s forwards ease-in-out;
-}
-
-@keyframes show-shell {
-    0% {
-        width: 0;
-    }
-}
-
-.photo,
-.content {
+.photo {
     box-sizing: border-box;
 }
 
@@ -77,11 +34,14 @@ const Pop = () => {
     width: 75px;
     height: 75px;
     border-radius: 50%;
+    margin-bottom: 15px;
     overflow: hidden;
     border: 3.75px solid #fafafa;
     background-color: #fafafa;
-    margin-left: -37.5px;
     box-shadow: 0 0 0.5rem #babbbc;
+}
+
+.photo :hover {
     animation: rotate-photo 0.5s forwards ease-in-out;
 }
 
@@ -95,212 +55,127 @@ const Pop = () => {
     width: 100%;
 }
 
-.content {
-    padding: 7.5px;
+@import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+
+*,
+div,
+h2 {
+    box-sizing: border-box;
+}
+
+// Demo Specific
+// 
+$blue: #3e82fb;
+
+.social {
+    background-color: #fafafa;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 200px;
+    height: 46.7px;
+    border-radius: 50px;
     overflow: hidden;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
+    transition: box-shadow .2s ease-out;
 
-.content::before {
-    content: "";
-    position: absolute;
-    width: 172.5px;
-    height: 112.5px;
-    left: 0;
-    top: -15px;
-    z-index: -1;
-    transform: rotate(-8deg);
-    background-image: linear-gradient(to top, #6866ee 0%, #fbc8d4 100%);
-}
-
-.content .text {
-    margin-top: 1px;
-    margin-left: 35px;
-}
-
-.content .text h3,
-.content .text h6 {
-    font-weight: normal;
-    margin: 2.25px 0;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-}
-
-.btn {
-    background-color: rgb(106, 106, 245);
-    width: 37.5px;
-    height: 37.5px;
-    position: absolute;
-    right: 18.75px;
-    top: 18.75px;
-    border-radius: 50%;
-    z-index: 1;
-    cursor: pointer;
-    transition-duration: 0.3s;
-    animation: pop-btn 0.3s both ease-in-out 0.5s;
-}
-
-@keyframes pop-btn {
-    0% {
-        transform: scale(0);
+    // Flex Children
+    div,
+    h2 {
+        margin: auto;
     }
 
-    80% {
-        transform: scale(1.2);
+    // Social Links
+    //
+    .social-links {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba($blue, 0);
+        width: 100%;
+        height: 100%;
+        padding: 0 30px;
+        transition: all .25s ease;
+
+        // Links
+        //
+        a {
+            margin: auto;
+            background: #fff;
+            color: $blue;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            line-height: 40px;
+            font-size: 18px;
+            transform: translate3d(0, 60px, 0);
+            transition: all .2s;
+
+            &:hover {
+                background: lighten($blue, 15%);
+                color: #fff;
+            }
+
+            i {
+                position: relative;
+                left: 12px;
+            }
+        }
+    }
+
+    // Hover 
+    &:hover {
+        box-shadow: inset 0 0 0 2px #dbe3ea, 0 1rem 20px rgba($blue, .2);
+
+        .social-links {
+            background: rgba($blue, 1);
+
+            // Sequential
+            >a {
+                animation: elastic .5s ease-out forwards 0s;
+
+                &:nth-child(2) {
+                    animation-delay: 0.05s;
+                }
+
+                &:nth-child(3) {
+                    animation-delay: 0.1s;
+                }
+
+                &:nth-child(4) {
+                    animation-delay: 0.15s;
+                }
+
+                &:nth-child(5) {
+                    animation-delay: 0.2s;
+                }
+            }
+        }
+    }
+}
+
+@keyframes elastic {
+    0% {
+        transform: translate3d(0, 60px, 0);
+    }
+
+    40% {
+        transform: translate3d(0, -5px, 0);
+    }
+
+    70% {
+        transform: translate3d(0, 5px, 0);
     }
 
     100% {
-        transform: scale(1);
+        transform: translate3d(0, 0, 0);
     }
 }
 
-.btn:hover {
-    box-shadow: 0 0 0 5px rgba(170, 187, 204, 0.5);
-}
-
-.btn span {
-    width: 60%;
-    height: 1.5px;
-    position: absolute;
-    background-color: white;
-    top: 50%;
-    left: 20%;
-    transform: translateY(-50%);
-    animation: to-hamburger 0.3s forwards ease-in-out;
-}
-
-.btn span::before,
-.btn span::after {
-    content: "";
-    width: 100%;
-    height: 1.5px;
-    position: absolute;
-    background-color: white;
-    transition-duration: 0.3s;
-    transform: rotate(0deg);
-    right: 0;
-}
-
-.btn span::before {
-    margin-top: -5.25px;
-}
-
-.btn span::after {
-    margin-top: 5.25px;
-}
-
-.btn.active span {
-    animation: to-arrow 0.3s forwards ease-in-out;
-}
-
-.btn.active span::before,
-.btn.active span::after {
-    width: 60%;
-    right: -0.75px;
-}
-.btn.active span::before {
-    transform: rotate(45deg);
-}
-
-.btn.active span::after {
-    transform: rotate(-45deg);
-}
-
-@keyframes to-hamburger {
-    from {
-        transform: translateY(-50%) rotate(-180deg);
-    }
-}
-
-@keyframes to-arrow {
-    from {
-        transform: translateY(-50%) rotate(0deg);
-    }
-
-    to {
-        transform: translateY(-50%) rotate(180deg);
-    }
-}
-
-.box {
-    opacity: 0;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.7);
-    position: absolute;
-    top: 50%;
-    right: -30%;
-    transform: translate(-50%, -50%);
-    transition-duration: 0.3s;
-    box-shadow: 0 0 10px #fff;
-    border: 5px #fff solid;
-}
-
-.box::after {
-    content: '';
-    display: block;
-    width: 90px;
-    height: 90px;
-    background-image: url(/card1.gif);
-    background-size: cover;
-    opacity: .7;
-    border-radius: 50%;
-}
-
-.box i {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background-color: #ececec;
-    font-size: 19.5px;
-    text-align: center;
-    line-height: 45px;
-    position: absolute;
-    left: 13.5px;
-    top: calc(60px - 50px/2)*0.75;
-    box-shadow: 0 0 10px #fff;
-    color: rgb(106, 106, 245);
-    background-color: #fff;
-    transition-duration: 0.3s;
-}
-
-.box i:hover {
-    transition-delay: initial !important;
-    box-shadow: 0 0 0 5px #babbbc;
-    background-color: rgb(106, 106, 245);
-    color: #fff;
-}
-
-.box.open {
-    opacity: 1;
-}
-
-.box.open i {
-    left: 15px;
-    opacity: 1;
-}
-
-.box.open i:nth-of-type(1) {
-    transform: rotate(-90deg) translateX(60px) rotate(90deg);
-    transition-delay: 0s;
-}
-
-.box.open i:nth-of-type(2) {
-    transform: rotate(-20deg) translateX(76px) rotate(20deg);
-    transition-delay: 0.15s;
-}
-
-.box.open i:nth-of-type(3) {
-    transform: rotate(45deg) translateX(105px) rotate(-45deg);
-    transition-delay: 0.3s;
-}
-
-.box.open i:nth-of-type(4) {
-    transform: rotate(90deg) translateX(105px) rotate(-90deg);
-    transition-delay: 0.45s;
+.dark .social {
+    //dark
+    background: rgb(0, 0, 0,0.5);
 }
 </style> 

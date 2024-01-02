@@ -2,17 +2,21 @@
   <div class="Wen">
     <span>Wen</span>
   </div>
-  <el-menu  class="el-menu-demo" mode="horizontal" active-text-color="white">
-    <el-menu-item @click="handleMenuItemClick('')" ><font-awesome-icon icon="fa-home" pull="left"/>主页</el-menu-item>
+  <el-menu class="el-menu-demo" mode="horizontal" active-text-color="white">
+    <el-menu-item @click="handleMenuItemClick('')"><font-awesome-icon icon="fa-home" pull="left" />主页</el-menu-item>
     <el-sub-menu>
-      <template #title><font-awesome-icon icon="fa-list" pull="left"/>文章</template>
-      <el-menu-item class="item" @click="handleMenuItemClick('Archives')"><font-awesome-icon icon="fa-box-archive" pull="left" transform="down-10.2"></font-awesome-icon>归档</el-menu-item>
-      <el-menu-item class="item" @click="handleMenuItemClick('Tags')"><font-awesome-icon icon="fa-tag" pull="left" transform="down-10.2"/>标签</el-menu-item>
-      <el-menu-item class="item" @click="handleMenuItemClick('Categories')"><font-awesome-icon icon="fa-folder-open" pull="left" transform="down-10.2"/>分类</el-menu-item>
+      <template #title><font-awesome-icon icon="fa-list" pull="left" />文章</template>
+      <el-menu-item class="item" @click="handleMenuItemClick('Archives')"><font-awesome-icon icon="fa-box-archive"
+          pull="left" transform="down-10.2"></font-awesome-icon>归档</el-menu-item>
+      <el-menu-item class="item" @click="handleMenuItemClick('Tags')"><font-awesome-icon icon="fa-tag" pull="left"
+          transform="down-10.2" />标签</el-menu-item>
+      <el-menu-item class="item" @click="handleMenuItemClick('Categories')"><font-awesome-icon icon="fa-folder-open"
+          pull="left" transform="down-10.2" />分类</el-menu-item>
     </el-sub-menu>
-    <el-menu-item @click="handleMenuItemClick('Comments')" ><font-awesome-icon icon="fa-envelope-open" pull="left"/>留言板</el-menu-item>
-    <el-menu-item @click="handleMenuItemClick('Link')"><font-awesome-icon icon="fa-link" pull="left"/>友链</el-menu-item>
-    <el-menu-item @click="handleMenuItemClick('About')"><font-awesome-icon icon="fa-heart" pull="left"/>关于</el-menu-item>
+    <el-menu-item @click="handleMenuItemClick('Comments')"><font-awesome-icon icon="fa-envelope-open"
+        pull="left" />留言板</el-menu-item>
+    <el-menu-item @click="handleMenuItemClick('Link')"><font-awesome-icon icon="fa-link" pull="left" />友链</el-menu-item>
+    <el-menu-item @click="handleMenuItemClick('About')"><font-awesome-icon icon="fa-heart" pull="left" />关于</el-menu-item>
   </el-menu>
 </template>
 
@@ -23,11 +27,11 @@ const $router = useRouter();
 
 const handleMenuItemClick = (route: string) => {
   title_change(route);
-  $router.push({ path:"/"+route});
+  $router.push({ path: "/" + route });
 }
 
 const title_change = (title: string) => {
-  switch (title){
+  switch (title) {
     case "":
       document.title = "Wen";
       break;
@@ -50,15 +54,17 @@ const title_change = (title: string) => {
       document.title = "关于 | Wen";
   }
 }
+
+
 </script>
 <style>
 /*名字*/
-.Wen{
-  background-color:transparent;
-  position: absolute;
+.Wen {
+  background-color: transparent;
+  position: fixed;
   left: 4em;
   top: 0.5em;
-  span{
+  span {
     color: white;
     font-weight: bold;
     font-size: 1.7em;
@@ -69,7 +75,7 @@ const title_change = (title: string) => {
 */
 .el-menu-demo {
   height: 2.15em;
-  position: absolute;
+  position: fixed;
   left: 36em;
   width: 33em;
   background: transparent;
@@ -157,17 +163,20 @@ sub-menu
   font-size: 1.15em;
   color: white !important;
   border-bottom-width: 0 !important;
-  padding-left: 0.5em;/*el-sub-menu左边的内边距*/
+  padding-left: 0.5em;
+  /*el-sub-menu左边的内边距*/
 }
 
-.el-icon{/*文章后面的箭头的位置*/
-  position: absolute ;
+.el-icon {
+  /*文章后面的箭头的位置*/
+  position: absolute;
   right: 0.5em !important;
 }
 
-.el-sub-menu{
+.el-sub-menu {
   width: 6em;
 }
+
 .el-sub-menu :hover {
   /*悬浮*/
   /*文章*/
@@ -204,5 +213,4 @@ sub-menu
   background: transparent !important;
   position: relative !important;
   right: -0.55em !important;
-}
-</style>
+}</style>

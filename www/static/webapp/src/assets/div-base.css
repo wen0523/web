@@ -1,8 +1,8 @@
 .div-base {
     background-color:rgb(255, 255, 255);
-    border-radius: 0.5em;
+    border-radius: 0.6em;
 }
 
 .dark .div-base{
-    background-color: rgba(11, 10, 10);
+    background-color: rgb(27, 21, 21);
 }
