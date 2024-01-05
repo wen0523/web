@@ -7,6 +7,8 @@ import Mouse from './components/Mouse.vue'
 import Weather from './components/Weather.vue'
 import Author_card from './components/Author_card.vue'
 import Clock from './components/Clock.vue'
+//导航栏
+
 </script>
 
 <template>
@@ -36,7 +38,8 @@ import Clock from './components/Clock.vue'
     <Love_2D />
     <Mouse />
 </template>
-<style>
+<style scoped>
+/*页面样式*/
 header {
     height: 100px;
     margin-bottom: 30px;
@@ -65,6 +68,8 @@ footer {
     height: 200px;
     /* 固定页脚高度 */
 }
+
+/*导航栏*/
 
 /*Author_card和Clock底层卡片*/
 .personal_card {
