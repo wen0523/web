@@ -70,7 +70,6 @@ p {
 
 #clock {
     /*basic*/
-    font-family: 'Share Tech Mono', monospace;
     text-align: center;
     text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
 

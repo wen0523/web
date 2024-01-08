@@ -25,7 +25,6 @@
 </div></template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 .g-svg {
     position: absolute;
@@ -110,7 +109,6 @@ p {
     color: black;
     font-size: 18px;
     text-align: justify;
-    font-style: italic;
     opacity: 0;
     animation: textShow 1s linear forwards;
     animation-timeline: scroll(root);
