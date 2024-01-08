@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
+
+//vue
 import Menu from './components/Menu.vue'
 import new_Button from './components/new_Button.vue'
 import Love_2D from './components/Love_2D.vue'
@@ -7,19 +9,24 @@ import Mouse from './components/Mouse.vue'
 import Weather from './components/Weather.vue'
 import Author_card from './components/Author_card.vue'
 import Clock from './components/Clock.vue'
-//导航栏
+import Lanyard from './components/Lanyard.vue'
+
+//js
+import Header_show_hide from './typescript/header-show-hide.ts'
+Header_show_hide();//菜单栏的显示与隐藏
 
 </script>
 
 <template>
     <!--页面整体布局-->
-    <header>
+    <header id="header"><!--header要在滑轮向上滑动时显示，设置位置为fixed方式，不在body里面，相对于
+                        窗口布局-->
         <Menu />
         <Weather />
         <new_Button />
     </header>
 
-    <main>
+    <main id="main">
         <div class="left-column">
             <div class="personal_card day" id="my_card">
                 <Author_card />
@@ -31,23 +38,49 @@ import Clock from './components/Clock.vue'
         </div>
     </main>
 
-    <footer>
+    <footer id="footer">
         <p>Page Footer</p>
     </footer>
 
+<!--独立组件-->
     <Love_2D />
     <Mouse />
+    <Lanyard />
 </template>
 <style scoped>
 /*页面样式*/
-header {
-    height: 100px;
-    margin-bottom: 30px;
+header {/*basic  day*/
+    position: fixed;
+    top:0;
+    right: 0;
+    height: 70px;
+    width: 100%;
+    z-index: 30;
+    background-color: rgb(255, 255, 255,0.6);
+    .font{
+        color: black !important;
+    }
+}
+
+.dark header{/*dark*/
+    background-color: rgb(0, 0, 0,0.7);
+    .font{
+        color: white;
+    }
+}
+
+header.top{/*透明*/
+    background: transparent;
+    .font{
+        color: white;
+    }
 }
 
 main {
     display: flex;
     flex: 1;
+    padding-top: 130px;
+    padding-bottom: 20px;
 }
 
 .left-column {
@@ -64,7 +97,6 @@ main {
 
 footer {
     text-align: center;
-    margin-top: 20px;
     height: 200px;
     /* 固定页脚高度 */
 }

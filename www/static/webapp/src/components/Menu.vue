@@ -3,30 +3,42 @@
     <span>Wen</span>
   </div>
   <el-menu class="el-menu-demo" mode="horizontal" active-text-color="white">
-    <el-menu-item @click="handleMenuItemClick('')"><font-awesome-icon icon="fa-home" pull="left" />主页</el-menu-item>
-    <el-sub-menu>
-      <template #title><font-awesome-icon icon="fa-list" pull="left" />文章</template>
-      <el-menu-item class="item" @click="handleMenuItemClick('Archives')"><font-awesome-icon icon="fa-box-archive"
-          pull="left" transform="down-10.2"></font-awesome-icon>归档</el-menu-item>
-      <el-menu-item class="item" @click="handleMenuItemClick('Tags')"><font-awesome-icon icon="fa-tag" pull="left"
-          transform="down-10.2" />标签</el-menu-item>
-      <el-menu-item class="item" @click="handleMenuItemClick('Categories')"><font-awesome-icon icon="fa-folder-open"
-          pull="left" transform="down-10.2" />分类</el-menu-item>
+    <el-menu-item @click="handleMenuItemClick" index="">
+      <span><font-awesome-icon icon="fa-home" />&nbsp;主页</span>
+    </el-menu-item>
+    <el-sub-menu index="sub-menu">
+      <template #title>
+        <span><font-awesome-icon icon="fa-list" />&nbsp;文章</span>
+      </template>
+      <el-menu-item class="item" @click="handleMenuItemClick" index="Archives">
+        <font-awesome-icon icon="fa-box-archive" pull="left" transform="down-10.2"></font-awesome-icon>归档
+      </el-menu-item>
+      <el-menu-item class="item" @click="handleMenuItemClick" index="Tags">
+        <font-awesome-icon icon="fa-tag" pull="left" transform="down-10.2" />标签
+      </el-menu-item>
+      <el-menu-item class="item" @click="handleMenuItemClick" index="Categories">
+        <font-awesome-icon icon="fa-folder-open" pull="left" transform="down-10.2" />分类
+      </el-menu-item>
     </el-sub-menu>
-    <el-menu-item @click="handleMenuItemClick('Comments')"><font-awesome-icon icon="fa-envelope-open"
-        pull="left" />留言板</el-menu-item>
-    <el-menu-item @click="handleMenuItemClick('Link')"><font-awesome-icon icon="fa-link" pull="left" />友链</el-menu-item>
-    <el-menu-item @click="handleMenuItemClick('About')"><font-awesome-icon icon="fa-heart" pull="left" />关于</el-menu-item>
+    <el-menu-item @click="handleMenuItemClick" index="Comments">
+      <span><font-awesome-icon icon="fa-envelope-open" />&nbsp;留言板</span>
+    </el-menu-item>
+    <el-menu-item @click="handleMenuItemClick" index="Link">
+      <span><font-awesome-icon icon="fa-link" />&nbsp;友链</span>
+    </el-menu-item>
+    <el-menu-item @click="handleMenuItemClick" index="About">
+      <span><font-awesome-icon icon="fa-heart" />&nbsp;关于</span>
+    </el-menu-item>
   </el-menu>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { useRouter } from 'vue-router';
 
 const $router = useRouter();
 
-const handleMenuItemClick = (route: string) => {
-  title_change(route);
+const handleMenuItemClick = (event: { index: string }) => {
+  const route = title_change(event.index);
   $router.push({ path: "/" + route });
 }
 
@@ -49,27 +61,44 @@ const title_change = (title: string) => {
       break;
     case "Link":
       document.title = "友链 | Wen";
-      break
+      break;
     case "About":
       document.title = "关于 | Wen";
+      break;
   }
+  return title;
+}
+</script>
+
+<style>
+/*一级菜单字体*/
+span{/*basic*/
+  font-weight: bold;
+  font-size: 1.3em;
+  color: black;
+  display: flex;
+  align-items: center;/*使图标居中*/
 }
 
+.dark span{
+  color: white;
+}
 
-</script>
-<style>
+.top span{/*top*/
+  color: white;
+}
 /*名字*/
 .Wen {
   background-color: transparent;
   position: fixed;
   left: 4em;
   top: 0.5em;
+
   span {
-    color: white;
-    font-weight: bold;
     font-size: 1.7em;
   }
 }
+
 /*
 总体
 */
@@ -88,9 +117,6 @@ const title_change = (title: string) => {
 */
 .el-menu-demo>.el-menu-item {
   /*静态*/
-  font-weight: bold;
-  font-size: 1.15em;
-  color: white !important;
   border-bottom-width: 0 !important;
   padding-left: 0.5em;
   padding-right: 0.5em;
@@ -99,7 +125,6 @@ const title_change = (title: string) => {
 .el-menu-demo>.el-menu-item:hover {
   /*悬浮*/
   background: transparent !important;
-  color: white !important;
   border-bottom-width: 0.3em !important;
   border-bottom-color: rgb(37, 69, 137) !important;
 }
@@ -159,9 +184,6 @@ sub-menu
 .el-sub-menu__title {
   /*静态*/
   /*文章*/
-  font-weight: bold;
-  font-size: 1.15em;
-  color: white !important;
   border-bottom-width: 0 !important;
   padding-left: 0.5em;
   /*el-sub-menu左边的内边距*/
@@ -187,7 +209,6 @@ sub-menu
 
 .el-popper {
   /*弹窗位置的第二层*/
-
   border-width: 0 !important;
   background: transparent !important;
 }
@@ -213,4 +234,5 @@ sub-menu
   background: transparent !important;
   position: relative !important;
   right: -0.55em !important;
-}</style>
+}
+</style>
