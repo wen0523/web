@@ -1,14 +1,14 @@
 <template>
   <div class="Wen">
-    <span>Wen</span>
+    <span class="span_content">Wen</span>
   </div>
   <el-menu class="el-menu-demo" mode="horizontal" active-text-color="white">
     <el-menu-item @click="handleMenuItemClick" index="">
-      <span><font-awesome-icon icon="fa-home" />&nbsp;主页</span>
+      <span class="span_content"><font-awesome-icon icon="fa-home" />&nbsp;主页</span>
     </el-menu-item>
     <el-sub-menu index="sub-menu">
       <template #title>
-        <span><font-awesome-icon icon="fa-list" />&nbsp;文章</span>
+        <span class="span_content"><font-awesome-icon icon="fa-list" />&nbsp;文章</span>
       </template>
       <el-menu-item class="item" @click="handleMenuItemClick" index="Archives">
         <font-awesome-icon icon="fa-box-archive" pull="left" transform="down-10.2"></font-awesome-icon>归档
@@ -21,13 +21,13 @@
       </el-menu-item>
     </el-sub-menu>
     <el-menu-item @click="handleMenuItemClick" index="Comments">
-      <span><font-awesome-icon icon="fa-envelope-open" />&nbsp;留言板</span>
+      <span class="span_content"><font-awesome-icon icon="fa-envelope-open" />&nbsp;留言板</span>
     </el-menu-item>
     <el-menu-item @click="handleMenuItemClick" index="Link">
-      <span><font-awesome-icon icon="fa-link" />&nbsp;友链</span>
+      <span class="span_content"><font-awesome-icon icon="fa-link" />&nbsp;友链</span>
     </el-menu-item>
     <el-menu-item @click="handleMenuItemClick" index="About">
-      <span><font-awesome-icon icon="fa-heart" />&nbsp;关于</span>
+      <span class="span_content"><font-awesome-icon icon="fa-heart" />&nbsp;关于</span>
     </el-menu-item>
   </el-menu>
 </template>
@@ -72,7 +72,7 @@ const title_change = (title: string) => {
 
 <style>
 /*一级菜单字体*/
-span{/*basic*/
+.span_content{/*basic*/
   font-weight: bold;
   font-size: 1.3em;
   color: black;
@@ -80,11 +80,11 @@ span{/*basic*/
   align-items: center;/*使图标居中*/
 }
 
-.dark span{
+.dark .span_content{
   color: white;
 }
 
-.top span{/*top*/
+.top .span_content{/*top*/
   color: white;
 }
 /*名字*/
